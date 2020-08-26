@@ -133,7 +133,7 @@ class OrchHelper:
 # This code can be left in here when importing this class into other modules
 
 if __name__ == "__main__":
-    url = "" # enterURL of your orchestrator (without https:// prefix)
+    url = input ("Enter URL or IP address of your orchestrator (without https:// prefix): ")
     user =  input("UserId: ")
     pwd = getpass.getpass("Password: ")
     o = OrchHelper(url, user, pwd)
