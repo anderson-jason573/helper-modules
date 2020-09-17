@@ -22,25 +22,17 @@ class OrchHelper:
         # NOTE: if the userId is using RBAC, they must have R/O or R/W access to the REST API functionality to access the APIs
         # Returns True if login succeeds, False if exception raised or failure to login
 
-        response = ApiMethods.post("/authentication/login", self)
-        if response.status_code == 200:
-            print("{0}: Orchestrator login success".format(self.url))
 
-        """
         if self.authMode not in self.supportedAuthModes:
             print("{0}: authentication mode not supported".format(self.authMode))
             return False
-        
-        
-        
-        try:   
-            #response = self.post("/authentication/login",
-            #                    {"user": self.user, "password": self.password,
-            #                     "loginType": self.supportedAuthModes.index(self.authMode)})
-            if response.status_code == 200:
+
+        try:
+            r = ApiMethods.post("/authentication/login", self)
+            if r.status_code == 200:
                 print("{0}: Orchestrator login success".format(self.url))
                 # get and set X-XSRF-TOKEN
-                for cookie in response.cookies:
+                for cookie in r.cookies:
                     if cookie.name == "orchCsrfToken":
                         self.headers["X-XSRF-TOKEN"] = cookie.value
                 return True
@@ -50,7 +42,7 @@ class OrchHelper:
         except:
             print("{0}: Exception - unable to connect to Orchestrator".format(self.url))
             return False
-        """
+        
 
     def mfa_login(self, mfacode):
         # alternative login function for multi-factor authentication
@@ -76,7 +68,7 @@ class OrchHelper:
                 print("{0}: Orchestrator MFA login failed: {1}".format(self.url, response.text))
                 return False
         except:
-            print("{0}: Exception - unable to connect to Orchestrator".format(self.ipaddress))
+            print("{0}: Exception - unable to connect to Orchestrator".format(self.url))
             return False
 
     def send_mfa(self):
@@ -92,11 +84,12 @@ class OrchHelper:
 
     def logout(self):
         try:
-            r = self.get("/authentication/logout")
+            r = ApiMethods.get("/authentication/logout", self)
             if r.status_code == 200:
                 print("{0}: Orchestrator logout success".format(self.url))
             else:
                 print("{0}: Orchestrator logout failed: {1}".format(self.url, r.text))
         except:
-            print("{0}: Exception - unable to logout of Orchestrator".format(self.ipaddress))
+            print("{0}: Exception - unable to logout of Orchestrator".format(self.url))
 
+#end

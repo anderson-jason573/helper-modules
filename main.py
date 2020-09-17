@@ -1,12 +1,12 @@
 import requests
 from login import OrchHelper
+from appliancinfo import ApplianceInfo
 
 url = input("OrchIP: ")
 user = input("UserId: ")
 pwd = input("Password: ")
-o = OrchHelper(url, user, pwd)
 
-o.authMode = "local"  # not required as local is the default
+o = OrchHelper(url, user, pwd)
 o.login()
 
 # for MFA login:
@@ -14,7 +14,7 @@ o.login()
 #    mfa = input("Enter MFA code: ")
 #    o.mfa_login(mfa)
 
-appliances = o.get_appliances()
-print("Total appliances: ", len(appliances))
+appliances = ApplianceInfo.get_appliances(o) # Pass OrchHelper object to get_appliances method in appliancinfo.py
+print("Total appliances: ", len(appliances)) # Print number of appliances
 
 o.logout()
