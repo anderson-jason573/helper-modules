@@ -1,6 +1,17 @@
+"""
+***************************************************************************
+This module contains the API methods, for API calls.  OrchHelper object
+gets passed to each API method, depending on the type of call - i.e.
+'POST', 'GET', 'PUT', 'DELETE'.
+***************************************************************************
+"""
+
+
 import requests
 
 class ApiMethods:
+
+    """ Methods for API calls """
 
     @classmethod
     def post(cls, url, obj):

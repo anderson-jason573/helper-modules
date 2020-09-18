@@ -1,14 +1,22 @@
+"""
+************************************************************************************
+This script reuests general information on each appliance from 
+the Orchestrator.
+************************************************************************************
+"""
+
 import requests
 import json
-from login import OrchHelper
-from appliancinfo import ApplianceInfo
+from login import OrchHelper #OrchHelper class from login.py
+from appliancinfo import ApplianceInfo #ApplianceInfo class from appliancinfo.py  *Need to fix spelling error.
 
+# User input for needed variables
 url = input("OrchIP: ")
 user = input("UserId: ")
 pwd = input("Password: ")
 
-o = OrchHelper(url, user, pwd)
-o.login()
+o = OrchHelper(url, user, pwd) # Create OrchHelper object
+o.login() # Call login method on OrchHelper object
 
 # for MFA login:
 #    o.send_mfa()

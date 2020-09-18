@@ -1,8 +1,19 @@
+"""
+************************************************************************************
+This module creates an object, that will be used for the various classes and 
+methods needed for desired API calls.
+
+The methods in this module will login and logout of API sessions with 
+the Orchestrator.
+************************************************************************************
+"""
+
 import requests
 import json
 from apicalls import ApiMethods
 
 class OrchHelper:
+    """ creates object for use in the various classes and methods for API calls """
     def __init__(self, url, user, password):
         self.url = url
         self.user = user
@@ -18,10 +29,12 @@ class OrchHelper:
         requests.packages.urllib3.disable_warnings()  # disable certificate warning messages
 
     def login(self):
+        
+        """
         # basic login function without multi-factor authentication
         # NOTE: if the userId is using RBAC, they must have R/O or R/W access to the REST API functionality to access the APIs
-        # Returns True if login succeeds, False if exception raised or failure to login
-
+        # Returns True if login succeeds, False if exception raised or failure to login 
+        """
 
         if self.authMode not in self.supportedAuthModes:
             print("{0}: authentication mode not supported".format(self.authMode))
@@ -45,6 +58,8 @@ class OrchHelper:
         
 
     def mfa_login(self, mfacode):
+
+        """
         # alternative login function for multi-factor authentication
         # mfacode is integer value that is provided by Orchestrator after providing initial userid and passwd
         # To use mfa_login, first request the mfacode using send_mfa(). An MFA code will be sent depending on how the user is configured.
@@ -52,6 +67,7 @@ class OrchHelper:
         #
         # NOTE: if the userId is using RBAC, they must have R/O or R/W access to the REST API functionality to access the APIs
         # Returns True if login succeeds, False if exception raised or failure to login
+        """
 
         try:
 
@@ -72,8 +88,12 @@ class OrchHelper:
             return False
 
     def send_mfa(self):
+        
+        """
         # send request to Orchestrator to issue MFA token to user
         # returns True on success, False on failure or exception
+        """
+
         try:
             response = self.post("/authentication/loginToken",
                                  {"user": self.user, "password": self.password, "TempCode": True})
