@@ -6,7 +6,6 @@ gets passed to each API method, depending on the type of call - i.e.
 ***************************************************************************
 """
 
-
 import requests
 
 class ApiMethods:

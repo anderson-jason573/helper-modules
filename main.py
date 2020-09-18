@@ -8,8 +8,7 @@ the Orchestrator.
 import requests
 import json
 from login import OrchHelper #OrchHelper class from login.py
-from appliancinfo import ApplianceInfo #ApplianceInfo class from appliancinfo.py  *Need to fix spelling error.
-
+from applianceinfo import ApplianceInfo #ApplianceInfo class from appliancinfo.py
 # User input for needed variables
 url = input("OrchIP: ")
 user = input("UserId: ")

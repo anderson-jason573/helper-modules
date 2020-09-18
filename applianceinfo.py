@@ -5,7 +5,6 @@ information on each appliance.
 *******************************************************************************
 """
 
-
 from apicalls import ApiMethods
 import json
 
