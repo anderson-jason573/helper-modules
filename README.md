@@ -12,4 +12,11 @@ Silver Peak Systems, Inc. (“Silver Peak”) hereby grants permission, free of 
 Warranty Disclaimer. THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE, SECURITY, ACCURACY, AND NONINFRINGEMENT.
 Limitation of Liability.  In no event and under no legal theory, whether in tort (including negligence), contract, or otherwise, unless required by applicable law (such as deliberate and grossly negligent acts) or agreed to in writing, shall Silver Peak be liable to you for damages, including any direct, indirect, special, incidental, or consequential damages of any character arising as a result of your use or inability to use the Software (including but not limited to damages for loss of goodwill, work stoppage, computer failure or malfunction, or any and all other commercial damages or losses), even if Silver Peak has been advised of the possibility of such damages. You assume full responsibility and risk of loss resulting from your downloading and/or use of the Software.
 
-- I split the sp_orchepler.py script into multiple modules and classes based on functional groupings
+
+
+
+
+
+- I split the sp_orchepler.py script into multiple modules and classes based on functional groupings.  I am pretty much done with this, and I do not know yet if I will merge into the master since it is the original.  I copied these modules into the "alarm" repo.  They will eventually make their way into the "silverpeak-api-pkg" repo.
+
+
